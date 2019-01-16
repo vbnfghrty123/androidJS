@@ -50,6 +50,7 @@ public class Rv_board_result extends AppCompatActivity {
                 Intent intent1 = getIntent();
                 Intent intent = new Intent(getApplicationContext(),UserActivity.class);
                 startActivity(intent);
+                finish();
 
             }
         });

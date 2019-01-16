@@ -61,6 +61,7 @@ public class UserActivity extends AppCompatActivity {
     private HomeFragment homeFragment;
     private WriteFragment writeFragment;
     private UserFragment userFragment;
+
     private SearchFragment searchFragment;
     private ConfigureFragment configureFragment;
     private String member_gson;
@@ -102,6 +103,7 @@ public class UserActivity extends AppCompatActivity {
 
                         return true;
                     case R.id.hommy:
+
                         setFragment(homeFragment);
 
                         return true;
@@ -111,6 +113,8 @@ public class UserActivity extends AppCompatActivity {
                         setFragment(writeFragment);
 
                         return true;
+
+
                     case R.id.user:
 
                         setFragment(userFragment);

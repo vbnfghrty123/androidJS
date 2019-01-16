@@ -68,7 +68,7 @@ import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements  DatePickerDialog.OnDateSetListener {
-
+    private static final String ip ="http://192.168.10.24:8080";
     final static String LOG_TAG =  "KNKRegisterDoing";
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements  DatePickerDialog
 
 
                 // webview url load. php 파일 주소
-                daum_webView.loadUrl("http://192.168.10.24:8080/JS/android/address");
+                daum_webView.loadUrl(ip+"/JS/android/address");
 
 
                 dialog.setTitle("주소 검색");
@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements  DatePickerDialog
                             byte[] buffer;
                             int maxBufferSize = 5 * 1024 * 1024;
 
-                            URL endPoint = new URL("http://192.168.10.24:8080/JS/android/register");
+                            URL endPoint = new URL(ip+"/JS/android/register");
                             HttpURLConnection myConnection = (HttpURLConnection) endPoint.openConnection();
                             myConnection.setUseCaches(false);
                             myConnection.setDoOutput(true);

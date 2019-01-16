@@ -3,6 +3,12 @@ package com.example.a402_24.day_03_register;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,7 +28,7 @@ import java.util.ArrayList;
 public class RecyclerAdapter_alert extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
-
+    private static final String ip ="http://192.168.10.24:8080";
 
 
     // 4번째 실행
@@ -53,6 +59,8 @@ public class RecyclerAdapter_alert extends RecyclerView.Adapter<RecyclerView.Vie
         this.alertArrayList = alertArrayList;
         Log.d("실행2","실행2");
     }
+
+
 
     // cardView 의 height 설정
     public static int getDpToPixel(Context context) {
@@ -114,20 +122,35 @@ public class RecyclerAdapter_alert extends RecyclerView.Adapter<RecyclerView.Vie
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-                // 댓글작성 멤버 프로필사진 불러오기
-                final String aaa = alertArrayList.get(i).getMember_profile();
-                try {
-                    URL url = new URL("http://192.168.10.24:8080"+aaa);
-                    HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
 
-                    InputStream inputStream = httpURLConnection.getInputStream();
-                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
 
-                    Log.d("bitmap1",bitmap.toString());
-                    myViewHolder.alert_member_profile.setImageBitmap(bitmap);
-                }catch (Exception e){
 
-                }
+
+
+
+
+
+                    // 멤버 프로필사진 불러오기
+                    final String aaa = alertArrayList.get(i).getMember_profile();
+                    Log.d("myProfile", aaa);
+                    try {
+                        URL url = new URL(ip+aaa);
+                        HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                        InputStream inputStream = httpURLConnection.getInputStream();
+                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                        Bitmap bitmap1 = MakeImageViewRounding.getRoundedCornerBitmap(bitmap);
+
+                        Log.d("bitmap1", bitmap.toString());
+
+                        myViewHolder.alert_member_profile.setImageBitmap(bitmap);
+
+                    } catch (Exception e) {
+
+                    }
+
+
+
 
             }
 

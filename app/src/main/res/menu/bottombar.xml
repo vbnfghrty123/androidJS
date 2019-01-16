@@ -18,10 +18,11 @@
 
     <item
         android:id="@+id/upload"
-        android:icon="@drawable/ic_camera_alt_black_24dp"
+        android:icon="@drawable/ic_edit_black_24dp"
         android:title="upload"
         app:showAsAction="ifRoom"
         />
+
 
     <item
     android:id="@+id/configure"

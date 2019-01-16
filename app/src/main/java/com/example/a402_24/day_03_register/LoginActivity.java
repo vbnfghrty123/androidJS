@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-
+    private static final String ip ="http://192.168.10.24:8080";
     final static String LOG_TAG =  "KNKLoginDoing";
     public static final String MyPREFERENCES = "MyPrefs";
     SharedPreferences sharedPreferences;
@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try{
-                            URL endPoint = new URL("http://192.168.10.24:8080/JS/android/login");
+                            URL endPoint = new URL(ip+"/JS/android/login");
                             HttpURLConnection myConnection = (HttpURLConnection) endPoint.openConnection();
 
                             String id = input_login_id.getText().toString();
@@ -123,7 +123,6 @@ public class LoginActivity extends AppCompatActivity {
                                         }
                                     });
                                     Intent intent = new Intent(getApplication(), UserActivity.class);
-
 
                                     startActivity(intent);
                                     finish();

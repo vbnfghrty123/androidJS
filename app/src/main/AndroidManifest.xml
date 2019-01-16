@@ -31,7 +31,19 @@
         <activity android:name=".configure" />
         <activity android:name=".Rv_board_result" />
         <activity android:name=".Rv_boardSelected" />
-        <activity android:name=".WriteFragment"></activity>
+        <activity android:name=".WriteFragment" />
+        <activity android:name=".messageFragment" />
+        <activity android:name=".Write_message" />
+        <activity android:name=".Write_board" />
+        <activity android:name=".MessageActivity" />
+        <activity android:name=".MessageReceiveSelected" />
+        <activity android:name=".MessageSendStore" />
+        <activity android:name=".Message_result" />
+        <activity android:name=".MessageSendSelected" />
+        <activity android:name=".clickAlertUserPage" />
+        <activity android:name=".memberWroteBoard" />
+        <activity android:name=".memberFriendAccept" />
+        <activity android:name=".reportList"></activity>
     </application>
 
 </manifest>

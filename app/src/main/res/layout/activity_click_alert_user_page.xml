@@ -31,29 +31,25 @@
             android:orientation="vertical"
             android:layout_weight="1"
             android:gravity="center">
-            <Button
-                android:id="@+id/watch_member_board"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="내가쓴글" />
+
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center">
+            <Button
+                android:id="@+id/followBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="친구추가" />
                 <Button
-                    android:id="@+id/followBtn"
+                    android:id="@+id/watch_member_board"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="친구목록" />
-                <Button
-                    android:id="@+id/followAccept"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="친구대기" />
+                    android:text="글보기" />
             </LinearLayout>
             <TextView
                 android:id="@+id/textView15"
@@ -82,13 +78,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="생일" />
-
-            <TextView
-                android:id="@+id/textView22"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="가입일" />
 
             <TextView
                 android:id="@+id/textView18"
@@ -121,9 +110,8 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="로그아웃" />
+            android:text="게시판" />
     </LinearLayout>
 </LinearLayout>

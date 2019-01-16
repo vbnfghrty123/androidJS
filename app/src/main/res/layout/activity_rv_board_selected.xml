@@ -54,6 +54,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/memberInfo"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal">
@@ -71,11 +72,12 @@
                 android:layout_gravity="center"
                 />
 
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                />
+                android:layout_weight="1" />
+
             <TextView
                 android:id="@+id/rv_board_watch"
                 android:layout_width="wrap_content"
@@ -94,7 +96,6 @@
                 android:id="@+id/rv_board_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginBottom="5dp"/>
@@ -110,46 +111,81 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
-            <TextView
+            android:layout_marginTop="10dp"
+            >
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0.7"
+                android:layout_marginRight="10dp">
+            <TextView
+                android:id="@+id/rv_board_delete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_weight="0.2"
+                android:text="삭제"
+
                 />
+
+            <TextView
+                android:id="@+id/rv_board_report"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_weight="0.05"
+                android:text="신고"
+
+                />
+            </LinearLayout>
             <TextView
                 android:id="@+id/rv_board_comments"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+
+
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:padding="0sp"
-                android:layout_weight="0.1"
+                android:layout_weight="0.2"
                 android:drawableStart="@drawable/ic_comment_black_24dp"/>
 
 
             <TextView
                 android:id="@+id/rv_board_shared"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:padding="0sp"
-                android:layout_weight="0.1"
+                android:layout_weight="0.2"
                 android:drawableStart="@drawable/ic_share_black_24dp"/>
 
 
-            <TextView
+            <LinearLayout
                 android:id="@+id/rv_board_heart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                >
+                <ImageView
+                    android:id="@+id/rv_board_heart_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_favorite_border_black_24dp"/>
+            <TextView
+                android:id="@+id/rv_board_heart_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-
                 android:padding="0sp"
-                android:layout_weight="0.1"
-                android:drawableStart="@drawable/ic_favorite_border_black_24dp"/>
+                android:layout_weight="0.1"/>
 
 
+            </LinearLayout>
 
 
         </LinearLayout>
