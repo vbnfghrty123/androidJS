@@ -290,12 +290,42 @@ Log.d("member1",member1.toString());
 
                 dialog.setTitle("댓글");
                 dialog.setView(report_list);
-                dialog.setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
+                if(member.getMember_id().equals(alertArrayList.get(position).getMember_id())) {
+                    dialog.setPositiveButton("댓글삭제", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            AsyncTask.execute(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        String alert_index = "alert_index=" +alertArrayList.get(position).getAlert_index();
+                                        URL url1 = new URL(ip + "/JS/android/rv_board/alert/delete");
+                                        HttpURLConnection httpURLConnection = (HttpURLConnection) url1.openConnection();
+                                        httpURLConnection.setRequestMethod("POST");
+                                        httpURLConnection.setDoOutput(true);
+                                        httpURLConnection.getOutputStream().write(alert_index.getBytes());
+                                        httpURLConnection.getResponseCode();
+
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Intent intent1 = getIntent();
+                                                finish();
+                                                startActivity(intent1);
+                                            }
+                                        });
+
+
+                                    } catch (Exception e) {
+
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+
                 dialog.setNegativeButton("신고", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -308,7 +338,7 @@ Log.d("member1",member1.toString());
                                     String alert_index = "alert_index=" + alertArrayList.get(position).getAlert_index();
                                     String alert_reason = "&alert_reason=" + alertArrayList.get(position).getAlert_reason();
                                     String report_reason = "&report_reason=" + rv_board_report_result;
-                                    String report_member_id = "&report_member_id=" + intent.getStringExtra("rv_board_WriteMember_id");
+                                    String report_member_id = "&report_member_id=" + alertArrayList.get(position).getMember_id();
                                     String reporter_member_id = "&reporter_member_id=" + member.getMember_id();
 
 

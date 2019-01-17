@@ -2,6 +2,9 @@ package com.example.a402_24.day_03_register;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
@@ -11,6 +14,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class RecyclerAdapter_report extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -42,8 +48,8 @@ public class RecyclerAdapter_report extends RecyclerView.Adapter<RecyclerView.Vi
 
     }
     // 1번째 실행
-    private ArrayList<Report> memberList;
-    RecyclerAdapter_report(ArrayList<Report> memberList){
+    private ArrayList<Member> memberList;
+    RecyclerAdapter_report(ArrayList<Member> memberList){
         this.memberList = memberList;
         Log.d("실행2","실행2");
 
@@ -87,7 +93,7 @@ public class RecyclerAdapter_report extends RecyclerView.Adapter<RecyclerView.Vi
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder,  int i) {
         Log.d("실행4","실행4");
         final MyViewHolder myViewHolder = (MyViewHolder) viewHolder;
-/*
+
         final String aaa = memberList.get(i).getMember_profile_pic();
         AsyncTask.execute(new Runnable() {
             @Override
@@ -108,11 +114,10 @@ public class RecyclerAdapter_report extends RecyclerView.Adapter<RecyclerView.Vi
                 }
             }
         });
-        */
-        myViewHolder.member_id.setText("신고한 아이디:"+memberList.get(i).getReport_member_id());
-        myViewHolder.member_name.setText("신고당한 아이디:"+memberList.get(i).getReporter_member_id());
-        myViewHolder.member_gender.setText("게시글 제목:"+memberList.get(i).getRv_board_title());
-        myViewHolder.member_Street_name_address.setText("게시글 내용:"+memberList.get(i).getRv_board_content());
+
+        myViewHolder.member_id.setText("아이디:"+memberList.get(i).getMember_id());
+        myViewHolder.member_name.setText("이름:"+memberList.get(i).getMember_name());
+
 
 
 

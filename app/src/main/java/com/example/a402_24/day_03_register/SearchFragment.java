@@ -36,9 +36,8 @@ EditText searchEdit;
     private static final String ip ="http://192.168.10.24:8080";
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
-    ArrayList<Member> memberArrayList;
     RecyclerAdapter_report myAdapter;
-
+    ArrayList<Member> memberList;
     public void setRefs(View v){
         mRecyclerView = v.findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -49,7 +48,7 @@ EditText searchEdit;
     }
 
     public void setEvents(View v){
-/*
+
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,28 +74,41 @@ EditText searchEdit;
                                 }
                                 String JsonMember = sb.toString();
                                 JSONArray jsonArray = new JSONArray(JsonMember);
-                                final ArrayList<Member> memberList = new ArrayList<>();
+                               memberList = new ArrayList<>();
+
                                 for( int i = 0 ; i < jsonArray.length() ; i++){
                                     Member member = new Member();
                                     JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                                    member.setMember_id(jsonObject.getString("member_id"));
-                                    member.setMember_name(jsonObject.getString("member_name"));
-                                    member.setMember_profile_pic(jsonObject.getString("member_profile_pic"));
+                                        member.setMember_id(jsonObject.getString("member_id"));
+                                    member.setMember_password("1");
                                     member.setMember_gender(jsonObject.getString("member_gender"));
-                                    member.setMember_Street_name_address(jsonObject.getString("member_Street_name_address"));
+                                    member.setMember_name(jsonObject.getString("member_name"));
+                                    member.setMember_birthday(jsonObject.getString("member_birthday"));
+                                    if(jsonObject.has("member_profile_pic")) {
+                                        member.setMember_profile_pic(jsonObject.getString("member_profile_pic"));
+                                    }
+                                    member.setMember_register_date("1");
+                                    if(jsonObject.has("member_Zip_code")) {
+                                        member.setMember_Zip_code(jsonObject.getString("member_Zip_code"));
+                                    }
+                                    if(jsonObject.has("member_Street_address")) {
+                                        member.setMember_Street_name_address(jsonObject.getString("member_Street_address"));
+                                    }
+                                    if(jsonObject.has("member_detailed_address")) {
+                                        member.setMember_Detailed_Address(jsonObject.getString("member_detailed_address"));
+                                    }
 
                                     memberList.add(member);
                                 }
 
 
-                                memberArrayList = new ArrayList<>();
+                                ArrayList<Member> memberArrayList = new ArrayList<>();
                                 if(memberList != null) {
-                                    Log.d("inRunOn:",memberList.get(0).getMember_gender().toString());
-                                    for (int i = 0; i < memberList.size(); i++) {
 
-                                        memberArrayList.add(new Member(memberList.get(i).getMember_id(),memberList.get(i).getMember_gender(),memberList.get(i).getMember_name(),memberList.get(i).getMember_profile_pic(),memberList.get(i).getMember_Street_name_address()));
-                                        Log.d("inRunOn2:",memberArrayList.get(0).getMember_id());
+                                    for (int i = 0; i < memberList.size(); i++) {
+                                        memberArrayList.add(new Member(memberList.get(i).getMember_id(),memberList.get(i).getMember_password(),memberList.get(i).getMember_gender(),memberList.get(i).getMember_name(),memberList.get(i).getMember_birthday(),memberList.get(i).getMember_profile_pic(),memberList.get(i).getMember_register_date(),memberList.get(i).getMember_Zip_code(),memberList.get(i).getMember_Street_name_address(),memberList.get(i).getMember_Detailed_Address()));
+
                                     }
 
                                     myAdapter = new RecyclerAdapter_report(memberArrayList);
@@ -114,20 +126,22 @@ EditText searchEdit;
                 });
             }
         });
-*/
+
         // 리사이클뷰의 각 영역 클릭시 클릭이벤트 처리
         ItemClickSupport.addTo(mRecyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener(){
             //
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
 
-                Intent intent = new Intent(getActivity(),Rv_boardSelected.class);
-                intent.putExtra("member_id",memberArrayList.get(position).getMember_id());
-                intent.putExtra("member_name",memberArrayList.get(position).getMember_name());
-                intent.putExtra("member_gender",memberArrayList.get(position).getMember_gender());
-                intent.putExtra("member_profile_pic",memberArrayList.get(position).getMember_profile_pic());
-                intent.putExtra("member_Street_name_address",memberArrayList.get(position).getMember_Street_name_address());
-
+                Intent intent = new Intent(getActivity(),clickAlertUserPage.class);
+                intent.putExtra("member_id", memberList.get(position).getMember_id());
+                intent.putExtra("member_name", memberList.get(position).getMember_name());
+                intent.putExtra("member_profile_pic", memberList.get(position).getMember_profile_pic());
+                intent.putExtra("member_gender", memberList.get(position).getMember_gender());
+                intent.putExtra("member_birthday", memberList.get(position).getMember_birthday());
+                intent.putExtra("member_Zip_code",memberList.get(position).getMember_Zip_code());
+                intent.putExtra("member_Street_address",memberList.get(position).getMember_Street_name_address());
+                intent.putExtra("member_detailed_address",memberList.get(position).getMember_Detailed_Address());
                 startActivity(intent);
             }
         });

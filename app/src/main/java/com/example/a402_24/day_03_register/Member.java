@@ -15,23 +15,24 @@ public class Member {
     private String member_Street_name_address;
     private String member_Detailed_Address;
 
-    public Member(String member_id, String member_name, String member_profile_pic) {
+    public Member(String member_id, String member_password, String member_gender, String member_name, String member_birthday, String member_profile_pic, String member_register_date, String member_Zip_code, String member_Street_name_address, String member_Detailed_Address) {
         this.member_id = member_id;
+        this.member_password = member_password;
+        this.member_gender = member_gender;
         this.member_name = member_name;
+        this.member_birthday = member_birthday;
         this.member_profile_pic = member_profile_pic;
+        this.member_register_date = member_register_date;
+        this.member_Zip_code = member_Zip_code;
+        this.member_Street_name_address = member_Street_name_address;
+        this.member_Detailed_Address = member_Detailed_Address;
     }
 
     public Member(){
 
     }
 
-    public Member(String member_id, String member_gender, String member_name, String member_profile_pic, String member_Street_name_address) {
-        this.member_id = member_id;
-        this.member_gender = member_gender;
-        this.member_name = member_name;
-        this.member_profile_pic = member_profile_pic;
-        this.member_Street_name_address = member_Street_name_address;
-    }
+  
 
     public String getMember_register_date() {
         return member_register_date;
